@@ -289,8 +289,51 @@ void AutoDriver::setHoldKVAL(byte kvalInput)
 
 byte AutoDriver::getHoldKVAL()
 {
-  return (byte) getParam(KVAL_HOLD);
+	return (byte)getParam(KVAL_HOLD);
 }
+
+void AutoDriver::setIntSpeed(float stepsPerSecond)
+{
+	unsigned long integerSpeed = intSpdCalc(stepsPerSecond);
+
+	setParam(INT_SPD, integerSpeed);
+}
+
+void AutoDriver::setStSlope(byte slopeInput)
+{
+	setParam(ST_SLP, slopeInput);
+}
+
+void AutoDriver::setAccFnSlope(byte slopeInput)
+{
+	setParam(FN_SLP_ACC, slopeInput);
+}
+
+void AutoDriver::setDecFnSlope(byte slopeInput)
+{
+	setParam(FN_SLP_DEC, slopeInput);
+}
+
+void AutoDriver::setKTherm(byte kthermInput)
+{
+	setParam(K_THERM, kthermInput);
+}
+
+void AutoDriver::setStallThreshold(byte stallThresholdInput)
+{
+	setParam(STALL_TH, stallThresholdInput);
+}
+
+void AutoDriver::setAlarmMask(byte alarmMaskInput)
+{
+	setParam(ALARM_EN, alarmMaskInput);
+}
+
+void AutoDriver::setIcConfig(byte icConfigInput)
+{
+	setParam(CONFIG, icConfigInput);
+}
+
 
 // Enable or disable the low-speed optimization option. With LSPD_OPT enabled,
 //  motion starts from 0 instead of MIN_SPEED and low-speed optimization keeps

@@ -2,6 +2,17 @@
 #define _dspin_constants_h_
 
 // Constant definitions provided by ST
+// 
+//  dSPIN direction options: functions that accept dir as an argument can be
+//  passed one of these constants. These functions are:
+//    run()
+//    stepClock()
+//    move()
+//    goToDir()
+//    goUntil()
+//    releaseSw()
+#define FWD  0x01
+#define REV  0x00
 
 // constant definitions for overcurrent thresholds. Write these values to 
 //  register OCD_TH to set the level at which an overcurrent even occurs.
@@ -53,13 +64,21 @@
 #define SYNC_SEL_32  0x60
 #define SYNC_SEL_64  0x70
 
+//  dSPIN action options: functions that accept action as an argument can be
+//  passed one of these constants. The contents of ABSPOS will either be
+//  reset or copied to MARK, depending on the value sent. These functions are:
+//    goUntil()
+//    releaseSw()
+#define RESET_ABSPOS  0x00
+#define COPY_ABSPOS   0x08
+
 // Bit names for the ALARM_EN register.
 //  Each of these bits defines one potential alarm condition.
 //  When one of these conditions occurs and the respective bit in ALARM_EN is set,
 //  the FLAG pin will go low. The register must be queried to determine which event
 //  caused the alarm.
 #define ALARM_EN_OVERCURRENT       0x01
-#define ALARM_EN_THERMAL_SHUTDOWN	 0x02
+#define ALARM_EN_THERMAL_SHUTDOWN  0x02
 #define ALARM_EN_THERMAL_WARNING   0x04
 #define ALARM_EN_UNDER_VOLTAGE     0x08
 #define ALARM_EN_STALL_DET_A       0x10
