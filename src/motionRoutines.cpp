@@ -4,7 +4,7 @@ extern AutoDriver myStepper;
 
 bool homeZAxis(void) {
 
-    const uint32_t startTime = millis();
+    //const uint32_t startTime = millis();
 
     //if (z_axis_homed()) {
         Serial.println("Moving out of Z-Axis sensor range");
