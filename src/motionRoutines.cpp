@@ -2,6 +2,29 @@
 
 extern AutoDriver myStepper;
 
+static uint8_t convertPowerPercentageToKval(float valueToConvert) {
+
+    if (valueToConvert > MAX_POWER_PERCENTAGE) {
+        //DV_info("Rounding to full power");
+        return Z_MOTOR_MAX_POWER;
+    }
+
+     valueToConvert = Z_MOTOR_MAX_POWER * (valueToConvert / 100.0f);
+
+    if (valueToConvert < KVAL_REGISTER_RESOLUTION) {
+        //lower bound for the driver
+        //DV_info("Lower limit for kval hit, clipping to minimum power: 1.6 percent or 0x1");
+        return Z_MOTOR_MIN_POWER;
+    }
+
+    return (uint8_t)valueToConvert;
+}
+
+static float convertPowerKvalToPercentage(uint8_t valueToConvert) {
+
+    return (float)valueToConvert * 100 / Z_MOTOR_MAX_POWER;
+}
+
 bool homeZAxis(void) {
 
     //const uint32_t startTime = millis();
@@ -46,4 +69,13 @@ bool homeZAxis(void) {
     //}
 
     return false;
+}
+
+void setPowerKvals(uint8_t configValuePercentage) {
+    uint8_t configValueKval = convertPowerPercentageToKval(configValuePercentage);
+    
+    myStepper.setAccKVAL(configValueKval);
+    myStepper.setDecKVAL(configValueKval);
+    myStepper.setRunKVAL(configValueKval);
+
 }
