@@ -2,7 +2,7 @@
 #include <stdio.h>
 
 extern AutoDriver myStepper;
-extern char buffer[100];
+extern char buffer[40];
 
 static uint8_t convertPowerPercentageToKval(float valueToConvert) {
 

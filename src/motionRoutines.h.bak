@@ -21,12 +21,12 @@
 #define DEFAULT_INTERSTROKE_DELAY 250.0
 #define Z_MOTOR_MIN_POWER 0x1
 #define DEFAULT_STARTING_POWER 100.0
-#define DEFAULT_STROKE_LENGTH 200.0f
+#define DEFAULT_STROKE_LENGTH 200.0
 #define Z_POWER_NOS_MODE	0x66
 
 #define STEP_FACTOR     64
 #define Z_STEPS_PER_REV 200
-#define Z_SCREW_PITCH   0.6096   // 3.125 for OG motor
+#define Z_SCREW_PITCH   3.125
 
 bool homeZAxis(void);
 void setPowerKvals(uint8_t configValuePercentage);

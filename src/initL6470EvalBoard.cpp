@@ -1,6 +1,6 @@
 #include "initL6470EvalBoard.h"
 
-stepperMotor zAxisMotorConfig;
+stepperMotorNew zAxisMotorConfig;
 
 void configureStepper(AutoDriver selectedChip) {
 	
@@ -13,7 +13,6 @@ void configureStepper(AutoDriver selectedChip) {
 	selectedChip.setRunKVAL(zAxisMotorConfig.runKval);
 	selectedChip.setAccKVAL(zAxisMotorConfig.accKval);
 	selectedChip.setDecKVAL(zAxisMotorConfig.decKval);
-	selectedChip.setRunKVAL(zAxisMotorConfig.runKval);
 	selectedChip.setIntSpeed(zAxisMotorConfig.intSpeed);
 	selectedChip.setStSlope(zAxisMotorConfig.stSlope);
 	selectedChip.setAccFnSlope(zAxisMotorConfig.accFnSlope);
